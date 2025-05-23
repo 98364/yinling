@@ -1,0 +1,95 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <!-- 顶部背景与用户信息 -->
+  <view class="header">
+    <view class="header-bg">
+      <view class="header-bg-color"></view>
+    </view>
+    <view class="user-info">
+      <view class="avatar-wrapper">
+        <image class="avatar" src="{{avatarUrl}}" mode="aspectFill"></image>
+        <view class="avatar-badge" wx:if="{{hasUserInfo}}"></view>
+      </view>
+      <view class="user-details" wx:if="{{hasUserInfo}}">
+        <text class="username">{{userInfo.nickname || '银铃用户'}}</text>
+        <view class="user-tag">会员用户</view>
+      </view>
+      <button class="login-btn" bindtap="goToLogin" hover-class="btn-hover" wx:else>立即登录/注册</button>
+    </view>
+  </view>
+  
+  <!-- 数据概览 -->
+  <view class="stats-overview" wx:if="{{hasUserInfo}}">
+    <view class="stat-item">
+      <text class="stat-value">{{exerciseDays || 15}}</text>
+      <text class="stat-label">运动天数</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{exerciseStreak || 3}}</text>
+      <text class="stat-label">连续打卡</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{healthPoints || 800}}</text>
+      <text class="stat-label">收获健康值</text>
+    </view>
+  </view>
+  
+  <!-- 功能区块 -->
+  <view class="feature-section">
+    <view class="section-title">健康管理</view>
+    <view class="feature-grid">
+      <view class="feature-item" bindtap="onMenuItemTap" data-id="healthProfile" hover-class="item-hover">
+        <view class="feature-icon health-icon"></view>
+        <text class="feature-text">健康档案</text>
+      </view>
+      <view class="feature-item" bindtap="onMenuItemTap" data-id="exerciseRecord" hover-class="item-hover">
+        <view class="feature-icon exercise-icon"></view>
+        <text class="feature-text">运动记录</text>
+      </view>
+      <view class="feature-item" bindtap="onMenuItemTap" data-id="healthStats" hover-class="item-hover">
+        <view class="feature-icon stats-icon"></view>
+        <text class="feature-text">健康数据</text>
+      </view>
+      <view class="feature-item" bindtap="onMenuItemTap" data-id="reminders" hover-class="item-hover">
+        <view class="feature-icon reminder-icon"></view>
+        <text class="feature-text">健康提醒</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 菜单列表 -->
+  <view class="menu-section">
+    <view class="menu-item" bindtap="onMenuItemTap" data-id="favorites" hover-class="menu-hover">
+      <view class="menu-icon favorite-icon"></view>
+      <text class="menu-text">我的收藏</text>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item" bindtap="onMenuItemTap" data-id="feedback" hover-class="menu-hover">
+      <view class="menu-icon feedback-icon"></view>
+      <text class="menu-text">意见反馈</text>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item" bindtap="onMenuItemTap" data-id="settings" hover-class="menu-hover">
+      <view class="menu-icon settings-icon"></view>
+      <text class="menu-text">设置</text>
+      <view class="menu-arrow"></view>
+    </view>
+    <view class="menu-item" bindtap="onMenuItemTap" data-id="about" hover-class="menu-hover">
+      <view class="menu-icon about-icon"></view>
+      <text class="menu-text">关于我们</text>
+      <view class="menu-arrow"></view>
+    </view>
+  </view>
+  
+  <!-- 退出登录 -->
+  <view class="logout-section" wx:if="{{hasUserInfo}}">
+    <button class="logout-btn" bindtap="logout" hover-class="logout-hover">退出登录</button>
+  </view>
+  
+  <!-- 版本信息 -->
+  <view class="version-info">
+    <text>银铃健康管家 v1.0.0</text>
+  </view>
+</view> 

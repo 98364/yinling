@@ -1,0 +1,181 @@
+/* pages/login/login.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 60rpx 40rpx;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+/* 头部样式 */
+.login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  margin-bottom: 20rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: var(--primary-color);
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: var(--light-text-color);
+}
+
+/* 表单容器 */
+.login-form {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+/* 切换登录方式 */
+.login-type-switch {
+  display: flex;
+  margin-bottom: 40rpx;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.switch-tab {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  padding: 20rpx 0;
+  color: var(--light-text-color);
+}
+
+.switch-tab.active {
+  color: var(--primary-color);
+  font-weight: bold;
+  position: relative;
+}
+
+.switch-tab.active:after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 25%;
+  width: 50%;
+  height: 4rpx;
+  background-color: var(--primary-color);
+}
+
+/* 输入框容器 */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  margin-bottom: 10rpx;
+  height: 90rpx;
+}
+
+.input-container.error {
+  border: 1px solid var(--error-color);
+}
+
+.input-icon {
+  margin-right: 20rpx;
+  font-size: 36rpx;
+}
+
+.form-input {
+  flex: 1;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+}
+
+.password-toggle {
+  font-size: 28rpx;
+  color: var(--primary-color);
+  padding: 10rpx;
+}
+
+/* 验证码样式 */
+.verification-code-container {
+  position: relative;
+}
+
+.verification-code-btn {
+  position: absolute;
+  right: 20rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 28rpx;
+  color: var(--primary-color);
+  background: transparent;
+  padding: 10rpx 20rpx;
+  border-left: 1px solid var(--border-color);
+}
+
+.verification-code-btn.disabled {
+  color: var(--light-text-color);
+}
+
+/* 错误提示 */
+.error-message {
+  color: var(--error-color);
+  font-size: 24rpx;
+  margin-top: 8rpx;
+  padding-left: 20rpx;
+}
+
+/* 按钮样式 */
+.btn-wx {
+  background-color: #07c160;
+  margin-bottom: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 演示登录按钮 */
+.btn-demo {
+  background-color: #ffa500;
+  margin-bottom: 20rpx;
+  color: #fff;
+}
+
+.wx-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+/* 注册链接 */
+.register-link {
+  text-align: center;
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: var(--light-text-color);
+}
+
+.register-link .text-primary {
+  display: inline-block;
+  margin-left: 10rpx;
+}
+
+/* 底部区域 */
+.login-footer {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 24rpx;
+  color: var(--light-text-color);
+} 

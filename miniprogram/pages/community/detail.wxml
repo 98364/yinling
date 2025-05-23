@@ -1,0 +1,105 @@
+<!--pages/community/detail.wxml-->
+<view class="container">
+  <view class="post-detail">
+    <view class="post-header">
+      <view class="user-info">
+        <image class="avatar" src="{{post.avatar}}"></image>
+        <view class="user-details">
+          <view class="username">{{post.username}}</view>
+          <view class="post-time">{{post.time}}</view>
+        </view>
+      </view>
+      <view class="post-tag" wx:if="{{post.type}}">{{post.type}}</view>
+    </view>
+    
+    <view class="post-content">
+      <view class="post-title" wx:if="{{post.title}}">{{post.title}}</view>
+      <view class="post-text">{{post.content}}</view>
+      
+      <view class="post-images" wx:if="{{post.images && post.images.length}}">
+        <block wx:for="{{post.images}}" wx:key="index">
+          <image class="content-image" mode="widthFix" src="{{item}}" bindtap="previewImage" data-src="{{item}}" data-images="{{post.images}}"></image>
+        </block>
+      </view>
+      
+      <view class="voice-message" wx:if="{{post.voiceUrl}}">
+        <view class="voice-icon {{isPlaying ? 'playing' : ''}}" bindtap="playVoice" data-url="{{post.voiceUrl}}">
+          <image src="/assets/icons/voice.png"></image>
+        </view>
+        <view class="voice-duration">{{post.voiceDuration}}″</view>
+      </view>
+    </view>
+    
+    <view class="post-stats">
+      <view class="post-time">{{post.time}}</view>
+      <view class="post-actions">
+        <view class="action-btn {{post.isLiked ? 'active' : ''}}" bindtap="toggleLike">
+          <image src="{{post.isLiked ? '/assets/icons/like-active.png' : '/assets/icons/like.png'}}"></image>
+          <text>{{post.likes || 0}}</text>
+        </view>
+        <button class="share-btn" open-type="share">
+          <image src="/assets/icons/share.png"></image>
+          <text>分享</text>
+        </button>
+      </view>
+    </view>
+  </view>
+  
+  <view class="divider"></view>
+  
+  <view class="comments-section">
+    <view class="section-title">评论 ({{commentList.length}})</view>
+    
+    <view class="comment-list">
+      <block wx:if="{{commentList.length > 0}}">
+        <view class="comment-item" wx:for="{{commentList}}" wx:key="id">
+          <image class="comment-avatar" src="{{item.avatar}}"></image>
+          <view class="comment-content">
+            <view class="comment-user">{{item.username}}</view>
+            <view class="comment-text">{{item.content}}</view>
+            <view class="comment-footer">
+              <view class="comment-time">{{item.time}}</view>
+              <view class="reply-btn" bindtap="replyComment" data-id="{{item.id}}" data-username="{{item.username}}">回复</view>
+            </view>
+            
+            <!-- 二级评论 -->
+            <view class="reply-list" wx:if="{{item.replies && item.replies.length > 0}}">
+              <view class="reply-item" wx:for="{{item.replies}}" wx:for-item="reply" wx:key="id">
+                <view class="reply-header">
+                  <text class="reply-username">{{reply.username}}</text>
+                  <text class="reply-to" wx:if="{{reply.replyTo}}">回复</text>
+                  <text class="reply-to-username" wx:if="{{reply.replyTo}}">{{reply.replyTo}}</text>
+                </view>
+                <view class="reply-content">{{reply.content}}</view>
+                <view class="reply-time">{{reply.time}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+      
+      <view class="empty-comment" wx:else>
+        <image src="/assets/icons/comment_empty.png"></image>
+        <view>暂无评论，说说你的看法吧</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="comment-input-container">
+    <view class="comment-input-wrap">
+      <input class="comment-input" placeholder="{{inputPlaceholder}}" value="{{commentText}}" focus="{{inputFocus}}" confirm-type="send" bindinput="onCommentInput" bindconfirm="submitComment"></input>
+      <view class="voice-input-btn" bindtouchstart="startVoiceRecord" bindtouchend="endVoiceRecord" bindtouchmove="cancelVoiceRecord">
+        <image src="/assets/icons/voice_input.png"></image>
+      </view>
+    </view>
+    <button class="submit-btn" bindtap="submitComment" disabled="{{!commentText}}">发送</button>
+  </view>
+  
+  <!-- 语音录制状态 -->
+  <view class="voice-recording-mask" wx:if="{{isRecording}}">
+    <view class="recording-content {{isRecordCanceled ? 'canceled' : ''}}">
+      <image class="recording-icon" src="{{isRecordCanceled ? '/assets/icons/voice_cancel.png' : '/assets/icons/voice_recording.png'}}"></image>
+      <text>{{isRecordCanceled ? '松开手指，取消发送' : '手指上滑，取消发送'}}</text>
+    </view>
+  </view>
+</view>

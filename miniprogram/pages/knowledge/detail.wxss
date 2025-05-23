@@ -1,0 +1,151 @@
+/* pages/knowledge/detail.wxss */
+.container {
+  background-color: #fff;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 文章头部 */
+.article-header {
+  padding: 30rpx;
+}
+
+.article-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 20rpx;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+}
+
+.article-category {
+  background-color: #f0f7f0;
+  color: #4CAF50;
+  padding: 6rpx 14rpx;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  margin-right: 15rpx;
+}
+
+.article-time {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 文章主图 */
+.article-image {
+  width: 100%;
+  display: block;
+}
+
+/* 文章摘要 */
+.article-summary {
+  padding: 30rpx;
+  background-color: #f9f9f9;
+  margin-bottom: 20rpx;
+}
+
+.article-summary text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* 文章内容 */
+.article-content {
+  padding: 30rpx;
+  font-size: 30rpx;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* 底部推荐 */
+.recommend-section {
+  margin-top: 40rpx;
+  padding: 30rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 20rpx;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10rpx;
+  height: 30rpx;
+  width: 6rpx;
+  background-color: #4CAF50;
+  border-radius: 3rpx;
+}
+
+.recommend-tips {
+  margin-top: 20rpx;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 10rpx;
+}
+
+.tip-icon {
+  font-size: 36rpx;
+  margin-right: 15rpx;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: #555;
+  flex: 1;
+  line-height: 1.6;
+}
+
+/* 加载和空状态 */
+.loading-container, .empty-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+}
+
+.loading {
+  width: 40rpx;
+  height: 40rpx;
+  border: 6rpx solid #f0f0f0;
+  border-radius: 50%;
+  border-top-color: #4CAF50;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text, .empty-container text {
+  font-size: 28rpx;
+  color: #999;
+} 

@@ -1,0 +1,47 @@
+<!--pages/exercisePlan/list.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="title">您的运动计划</view>
+    <view class="subtitle">根据您的健康数据定制</view>
+  </view>
+  
+  <view class="recommend-section">
+    <view class="section-title">今日推荐</view>
+    <view class="recommend-card" bindtap="goToDetail" data-id="{{recommendPlan.id}}">
+      <image class="recommend-image" src="{{recommendPlan.image}}" mode="aspectFill"></image>
+      <view class="recommend-info">
+        <view class="recommend-name">{{recommendPlan.name}}</view>
+        <view class="recommend-desc">{{recommendPlan.description}}</view>
+        <view class="recommend-duration">时长: {{recommendPlan.duration}}分钟</view>
+        <view class="recommend-intensity">强度: {{recommendPlan.intensity}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="plan-section">
+    <view class="section-title">我的计划</view>
+    <view class="plan-list">
+      <block wx:for="{{planList}}" wx:key="id">
+        <view class="plan-item" bindtap="goToDetail" data-id="{{item.id}}">
+          <image class="plan-icon" src="{{item.icon}}"></image>
+          <view class="plan-info">
+            <view class="plan-name">{{item.name}}</view>
+            <view class="plan-desc">{{item.shortDesc}}</view>
+            <view class="plan-progress">
+              <progress percent="{{item.progress}}" stroke-width="3" color="#4CAF50" />
+              <text>{{item.progress}}%</text>
+            </view>
+          </view>
+          <view class="plan-arrow">
+            <text class="cuIcon-right"></text>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <view class="btn-section">
+    <button class="btn-generate" bindtap="goToGenerate">生成新的运动计划</button>
+    <button class="btn-record" bindtap="goToRecord">记录运动</button>
+  </view>
+</view>

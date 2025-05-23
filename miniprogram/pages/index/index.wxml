@@ -1,0 +1,164 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <!-- 未登录状态 -->
+  <view wx:elif="{{!isLoggedIn}}" class="not-login-container">
+    <view class="welcome-block card">
+      <view class="title">欢迎使用银铃健康管家</view>
+      <view class="subtitle">专为中老年人设计的健康管理小程序</view>
+      <view class="mt-20">
+        <button class="btn btn-lg" bindtap="goToLogin">立即登录/注册</button>
+      </view>
+      
+      <view class="mt-30 introduction">
+        <view class="subtitle">主要功能</view>
+        <view class="feature-item">
+          <text class="feature-icon">🏃</text>
+          <text class="feature-text">个性化运动方案</text>
+        </view>
+        <view class="feature-item">
+          <text class="feature-icon">📊</text>
+          <text class="feature-text">运动健康数据记录</text>
+        </view>
+        <view class="feature-item">
+          <text class="feature-icon">👨‍👩‍👧‍👦</text>
+          <text class="feature-text">健康社区交流</text>
+        </view>
+        <view class="feature-item">
+          <text class="feature-icon">📚</text>
+          <text class="feature-text">专业健康知识</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 登录后的主页 -->
+  <view wx:else class="logged-container">
+    <!-- 用户简介和健康档案入口 -->
+    <view class="user-card card">
+      <view class="user-info">
+        <image class="user-avatar" src="{{userInfo.avatar || '/assets/images/default-avatar.png'}}"></image>
+        <view class="user-detail">
+          <view class="user-name">{{userInfo.nickname || '健康用户'}}</view>
+          <view class="user-health-tag" bindtap="goToHealthProfile">查看健康档案</view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 今日运动计划 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">今日运动计划</text>
+      </view>
+      
+      <view wx:if="{{exercisePlan}}" class="card" bindtap="goToPlanDetail" data-id="{{exercisePlan.id}}">
+        <view class="plan-title">{{exercisePlan.name}}</view>
+        <view class="plan-progress">
+          <progress percent="{{exercisePlan.completionRate}}" stroke-width="8" color="#4CAF50" backgroundColor="#e6e6e6" />
+          <text class="progress-text">完成率: {{exercisePlan.completionRate}}%</text>
+        </view>
+        <view class="flex-row align-center justify-between mt-10">
+          <text class="text-light">开始日期: {{exercisePlan.startDate}}</text>
+          <button class="btn-sm btn" bindtap="goToRecordExercise">记录运动</button>
+        </view>
+      </view>
+      
+      <view wx:else class="card">
+        <view class="no-data-tip">
+          <text>暂无运动计划</text>
+          <view class="mt-10">
+            <button class="btn" bindtap="goToCreatePlan">制定运动计划</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 今日运动记录 -->
+    <view class="section">
+      <view class="section-header">
+        <text class="section-title">今日运动记录</text>
+      </view>
+      
+      <view wx:if="{{todayRecord && todayRecord.length > 0}}" class="card">
+        <view wx:for="{{todayRecord}}" wx:key="id" class="record-item">
+          <view class="flex-row justify-between">
+            <text class="record-name">{{item.exerciseName}}</text>
+            <text class="record-duration">{{item.duration}}分钟</text>
+          </view>
+          <view class="flex-row mt-10">
+            <text class="record-tag">{{item.intensity}}</text>
+            <text class="record-time">{{item.date}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <view wx:else class="card">
+        <view class="no-data-tip">
+          <text>今日暂无运动记录</text>
+          <view class="mt-10">
+            <button class="btn" bindtap="goToRecordExercise">记录今日运动</button>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 健康知识推荐 -->
+    <view class="section">
+      <view class="section-header flex-row justify-between">
+        <text class="section-title">健康知识推荐</text>
+        <text class="more-link" bindtap="goToKnowledgeList">查看更多</text>
+      </view>
+      
+      <view wx:if="{{healthArticles && healthArticles.length > 0}}" class="knowledge-list">
+        <view wx:for="{{healthArticles}}" wx:key="id" class="card knowledge-card" bindtap="goToArticleDetail" data-id="{{item.id}}">
+          <view class="flex-row">
+            <view class="knowledge-content">
+              <view class="knowledge-title">{{item.title}}</view>
+              <view class="knowledge-summary">{{item.summary || '点击查看详情'}}</view>
+              <view class="knowledge-meta">
+                <text class="knowledge-category">{{item.category}}</text>
+                <text class="knowledge-date">{{item.publishedAt}}</text>
+              </view>
+            </view>
+            <image wx:if="{{item.imageUrl}}" class="knowledge-image" src="{{item.imageUrl}}" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+      
+      <view wx:else class="card">
+        <view class="no-data-tip">
+          <text>暂无推荐健康知识</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 社区热门话题 -->
+    <view class="section">
+      <view class="section-header flex-row justify-between">
+        <text class="section-title">社区热门话题</text>
+        <text class="more-link" bindtap="goToCommunityList">参与讨论</text>
+      </view>
+      
+      <view wx:if="{{trendingTopics && trendingTopics.length > 0}}" class="card">
+        <view wx:for="{{trendingTopics}}" wx:key="topic" class="topic-item">
+          <view class="topic-name">#{{item.topic}}#</view>
+          <view class="topic-meta">
+            <text class="topic-posts">{{item.postCount}}个讨论</text>
+            <text class="topic-likes">{{item.totalLikes}}个点赞</text>
+          </view>
+        </view>
+      </view>
+      
+      <view wx:else class="card">
+        <view class="no-data-tip">
+          <text>暂无热门话题</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

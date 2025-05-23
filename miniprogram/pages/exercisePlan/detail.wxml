@@ -1,0 +1,76 @@
+<!--pages/exercisePlan/detail.wxml-->
+<view class="container">
+  <view class="plan-header">
+    <image class="plan-image" src="{{plan.image}}" mode="aspectFill"></image>
+    <view class="plan-name">{{plan.name}}</view>
+    <view class="plan-tags">
+      <view class="tag">{{plan.intensity}}</view>
+      <view class="tag">{{plan.category}}</view>
+      <view class="tag">{{plan.duration}}分钟</view>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">运动说明</view>
+    <view class="plan-description">{{plan.description}}</view>
+    <view class="health-tips">
+      <view class="tip-title">健康提示</view>
+      <view class="tip-content">{{plan.healthTips}}</view>
+    </view>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">图文教学</view>
+    <swiper class="tutorial-swiper" indicator-dots="{{true}}" autoplay="{{false}}">
+      <block wx:for="{{plan.tutorialSteps}}" wx:key="index">
+        <swiper-item>
+          <view class="tutorial-step">
+            <image class="step-image" src="{{item.image}}" mode="aspectFit"></image>
+            <view class="step-instruction">
+              <view class="step-number">步骤 {{index+1}}</view>
+              <view class="step-desc">{{item.description}}</view>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  
+  <view class="section" wx:if="{{plan.videoUrl}}">
+    <view class="section-title">视频教学</view>
+    <video 
+      class="tutorial-video" 
+      src="{{plan.videoUrl}}" 
+      controls="{{true}}"
+      show-center-play-btn="{{true}}"
+      enable-progress-gesture="{{true}}"
+      object-fit="cover"
+      show-mute-btn="{{true}}"
+    ></video>
+  </view>
+  
+  <view class="section">
+    <view class="section-title">运动安排</view>
+    <view class="schedule">
+      <view class="schedule-item" wx:for="{{plan.schedule}}" wx:key="day">
+        <view class="schedule-day">{{item.day}}</view>
+        <view class="schedule-content">{{item.content}}</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="timer-section" wx:if="{{isTimerVisible}}">
+    <view class="timer">{{timerDisplay}}</view>
+    <view class="timer-btns">
+      <button class="btn-timer {{isTimerRunning ? 'btn-pause' : 'btn-start'}}" bindtap="toggleTimer">
+        {{isTimerRunning ? '暂停' : '开始'}}
+      </button>
+      <button class="btn-timer btn-reset" bindtap="resetTimer">重置</button>
+    </view>
+  </view>
+  
+  <view class="btn-section">
+    <button class="btn-primary" bindtap="startExercise">开始运动</button>
+    <button class="btn-secondary" bindtap="setReminder">设置提醒</button>
+  </view>
+</view>

@@ -1,0 +1,413 @@
+/* pages/community/detail.wxss */
+
+.container {
+  padding-bottom: 120rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.post-detail {
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.post-time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 6rpx;
+}
+
+.post-tag {
+  font-size: 24rpx;
+  color: #4CAF50;
+  padding: 4rpx 16rpx;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 20rpx;
+}
+
+.post-content {
+  margin-bottom: 30rpx;
+}
+
+.post-title {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.post-text {
+  font-size: 32rpx;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 30rpx;
+}
+
+.post-images {
+  margin-bottom: 30rpx;
+}
+
+.content-image {
+  width: 100%;
+  margin-bottom: 20rpx;
+  border-radius: 8rpx;
+}
+
+.voice-message {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  padding: 20rpx;
+  width: 300rpx;
+  margin-bottom: 30rpx;
+}
+
+.voice-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.voice-icon image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.voice-icon.playing {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.voice-duration {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.post-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1rpx solid #f0f0f0;
+  padding-top: 20rpx;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  margin-right: 30rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.action-btn.active {
+  color: #4CAF50;
+}
+
+.action-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  font-size: 28rpx;
+  color: #666;
+  border: none;
+  line-height: normal;
+}
+
+.share-btn::after {
+  border: none;
+}
+
+.share-btn image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+
+.divider {
+  height: 20rpx;
+  background-color: #f8f8f8;
+}
+
+.comments-section {
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.comment-list {
+  margin-bottom: 30rpx;
+}
+
+.comment-item {
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.comment-avatar {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-user {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.comment-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.comment-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.reply-btn {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+.reply-list {
+  background-color: #f8f8f8;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+
+.reply-item {
+  margin-bottom: 20rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.reply-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.reply-header {
+  margin-bottom: 10rpx;
+}
+
+.reply-username {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+.reply-to {
+  font-size: 26rpx;
+  color: #666;
+  margin: 0 10rpx;
+}
+
+.reply-to-username {
+  font-size: 26rpx;
+  color: #4CAF50;
+}
+
+.reply-content {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 10rpx;
+}
+
+.reply-time {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.empty-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.empty-comment image {
+  width: 150rpx;
+  height: 150rpx;
+  margin-bottom: 20rpx;
+}
+
+.comment-input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.comment-input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 40rpx;
+  padding: 0 20rpx;
+  margin-right: 20rpx;
+}
+
+.comment-input {
+  flex: 1;
+  height: 80rpx;
+  font-size: 28rpx;
+}
+
+.voice-input-btn {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-input-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.submit-btn {
+  min-width: 120rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 28rpx;
+  border-radius: 35rpx;
+  margin: 0;
+  padding: 0 30rpx;
+}
+
+.submit-btn[disabled] {
+  background-color: #ccc;
+  color: #fff;
+}
+
+.voice-recording-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.recording-content {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 20rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recording-content.canceled {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.recording-icon {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 30rpx;
+}
+
+.recording-content text {
+  color: #fff;
+  font-size: 28rpx;
+} 

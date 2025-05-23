@@ -1,0 +1,93 @@
+<!--pages/community/list.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="search-bar">
+      <icon type="search" size="14" color="#999"></icon>
+      <input placeholder="搜索话题或内容" bindinput="onSearchInput"></input>
+    </view>
+    <view class="publish-btn" bindtap="goToPublish">发布</view>
+  </view>
+  
+  <view class="filter-tabs">
+    <view class="tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">全部</view>
+    <view class="tab {{activeTab === 'checkin' ? 'active' : ''}}" bindtap="switchTab" data-tab="checkin">运动打卡</view>
+    <view class="tab {{activeTab === 'topic' ? 'active' : ''}}" bindtap="switchTab" data-tab="topic">话题交流</view>
+  </view>
+  
+  <view class="topic-tags" wx:if="{{activeTab === 'topic'}}">
+    <scroll-view class="tags-scroll" scroll-x="true">
+      <view class="tag {{selectedTopic === 'all' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="all">全部话题</view>
+      <view class="tag {{selectedTopic === 'exercise' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="exercise">运动技巧</view>
+      <view class="tag {{selectedTopic === 'health' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="health">健康管理</view>
+      <view class="tag {{selectedTopic === 'diet' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="diet">饮食营养</view>
+      <view class="tag {{selectedTopic === 'joint' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="joint">关节保护</view>
+      <view class="tag {{selectedTopic === 'chronic' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="chronic">慢病管理</view>
+    </scroll-view>
+  </view>
+  
+  <view class="post-list">
+    <block wx:for="{{postList}}" wx:key="id">
+      <view class="post-item" bindtap="goToDetail" data-id="{{item.id}}">
+        <view class="post-header">
+          <view class="user-info">
+            <image class="avatar" src="{{item.avatar}}"></image>
+            <view class="user-details">
+              <view class="username">{{item.username}}</view>
+              <view class="post-time">{{item.time}}</view>
+            </view>
+          </view>
+          <view class="post-tag" wx:if="{{item.type}}">{{item.type}}</view>
+        </view>
+        
+        <view class="post-content">
+          <view class="post-title" wx:if="{{item.title}}">{{item.title}}</view>
+          <view class="post-text">{{item.content}}</view>
+          
+          <view class="post-images" wx:if="{{item.images && item.images.length}}">
+            <block wx:if="{{item.images.length === 1}}">
+              <image class="single-image" mode="aspectFill" src="{{item.images[0]}}" bindtap="previewImage" data-src="{{item.images[0]}}" data-images="{{item.images}}"></image>
+            </block>
+            <block wx:else>
+              <view class="image-grid">
+                <block wx:for="{{item.images}}" wx:for-item="img" wx:for-index="imgIndex" wx:key="imgIndex">
+                  <image class="grid-image" mode="aspectFill" src="{{img}}" bindtap="previewImage" data-src="{{img}}" data-images="{{item.images}}"></image>
+                </block>
+              </view>
+            </block>
+          </view>
+          
+          <view class="voice-message" wx:if="{{item.voiceUrl}}">
+            <view class="voice-icon {{isPlaying && currentVoiceId === item.id ? 'playing' : ''}}" bindtap="playVoice" data-url="{{item.voiceUrl}}" data-id="{{item.id}}">
+              <image src="/assets/icons/voice.png"></image>
+            </view>
+            <view class="voice-duration">{{item.voiceDuration}}″</view>
+          </view>
+        </view>
+        
+        <view class="post-footer">
+          <view class="action-btn" catchtap="toggleLike" data-id="{{item.id}}">
+            <image src="{{item.isLiked ? '/assets/icons/like-active.png' : '/assets/icons/like.png'}}"></image>
+            <text>{{item.likes || 0}}</text>
+          </view>
+          <view class="action-btn" catchtap="goToDetail" data-id="{{item.id}}">
+            <image src="/assets/icons/comment.png"></image>
+            <text>{{item.comments || 0}}</text>
+          </view>
+          <view class="action-btn" catchtap="share" data-id="{{item.id}}">
+            <image src="/assets/icons/share.png"></image>
+            <text>分享</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  <view class="empty-tips" wx:if="{{postList.length === 0}}">
+    <image src="/assets/icons/empty.png"></image>
+    <view>暂无内容，快来发布第一条吧</view>
+  </view>
+  
+  <view class="float-btn" bindtap="goToPublish">
+    <image src="/assets/icons/add.png"></image>
+  </view>
+</view>

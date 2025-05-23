@@ -1,0 +1,155 @@
+<!--pages/healthProfile/healthProfile.wxml-->
+<view class="container">
+  <!-- 加载中 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">加载中...</view>
+  </view>
+  
+  <!-- 成功提示 -->
+  <view wx:elif="{{success}}" class="success-container">
+    <icon type="success" size="64"></icon>
+    <view class="success-text">健康档案保存成功</view>
+    <view class="success-tip">即将返回...</view>
+  </view>
+  
+  <!-- 健康档案表单 -->
+  <view wx:else class="health-profile-form">
+    <view class="section-title">基本信息</view>
+    
+    <!-- 年龄 -->
+    <view class="form-group">
+      <view class="form-label">年龄</view>
+      <view class="input-container">
+        <input class="form-input" type="number" placeholder="请输入您的年龄" value="{{age}}" bindinput="inputAge" />
+        <text class="input-suffix">岁</text>
+      </view>
+    </view>
+    
+    <!-- 性别 -->
+    <view class="form-group">
+      <view class="form-label">性别</view>
+      <radio-group class="radio-group" bindchange="selectGender">
+        <label class="radio-label">
+          <radio value="男" checked="{{gender === '男'}}" color="#4CAF50" />
+          <text>男</text>
+        </label>
+        <label class="radio-label">
+          <radio value="女" checked="{{gender === '女'}}" color="#4CAF50" />
+          <text>女</text>
+        </label>
+      </radio-group>
+    </view>
+    
+    <!-- 身高 -->
+    <view class="form-group">
+      <view class="form-label">身高</view>
+      <view class="input-container">
+        <input class="form-input" type="digit" placeholder="请输入您的身高" value="{{height}}" bindinput="inputHeight" />
+        <text class="input-suffix">厘米</text>
+      </view>
+    </view>
+    
+    <!-- 体重 -->
+    <view class="form-group">
+      <view class="form-label">体重</view>
+      <view class="input-container">
+        <input class="form-input" type="digit" placeholder="请输入您的体重" value="{{weight}}" bindinput="inputWeight" />
+        <text class="input-suffix">公斤</text>
+      </view>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="section-title">健康状况</view>
+    
+    <!-- 慢性病选择 -->
+    <view class="form-group">
+      <view class="form-label">慢性病情况（多选）</view>
+      <view class="checkboxes">
+        <view 
+          wx:for="{{chronicDiseaseOptions}}" 
+          wx:key="id" 
+          class="checkbox-item {{chronicDiseases.indexOf(item.id) > -1 ? 'active' : ''}}" 
+          bindtap="toggleChronicDisease" 
+          data-id="{{item.id}}"
+        >
+          <text>{{item.name}}</text>
+          <icon wx:if="{{chronicDiseases.indexOf(item.id) > -1}}" class="checkbox-icon" type="success" size="16" color="#4CAF50"></icon>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 体能水平 -->
+    <view class="form-group">
+      <view class="form-label">体能水平</view>
+      <radio-group class="radio-group column" bindchange="selectFitnessLevel">
+        <label wx:for="{{fitnessLevelOptions}}" wx:key="id" class="radio-label">
+          <radio value="{{item.id}}" checked="{{fitnessLevel === item.id}}" color="#4CAF50" />
+          <text>{{item.name}}</text>
+        </label>
+      </radio-group>
+    </view>
+    
+    <!-- 健康目标 -->
+    <view class="form-group">
+      <view class="form-label">健康目标（多选）</view>
+      <view class="checkboxes">
+        <view 
+          wx:for="{{healthGoalOptions}}" 
+          wx:key="id" 
+          class="checkbox-item {{healthGoals.indexOf(item.id) > -1 ? 'active' : ''}}" 
+          bindtap="toggleHealthGoal" 
+          data-id="{{item.id}}"
+        >
+          <text>{{item.name}}</text>
+          <icon wx:if="{{healthGoals.indexOf(item.id) > -1}}" class="checkbox-icon" type="success" size="16" color="#4CAF50"></icon>
+        </view>
+      </view>
+    </view>
+    
+    <view class="divider"></view>
+    
+    <view class="section-title">运动习惯</view>
+    
+    <!-- 运动频率 -->
+    <view class="form-group">
+      <view class="form-label">每周运动次数</view>
+      <view class="input-container">
+        <input class="form-input" type="number" placeholder="请输入每周运动次数" value="{{exerciseHabits.frequency}}" bindinput="inputExerciseFrequency" />
+        <text class="input-suffix">次/周</text>
+      </view>
+    </view>
+    
+    <!-- 运动时长 -->
+    <view class="form-group">
+      <view class="form-label">每次运动时长</view>
+      <view class="input-container">
+        <input class="form-input" type="number" placeholder="请输入每次运动时长" value="{{exerciseHabits.duration}}" bindinput="inputExerciseDuration" />
+        <text class="input-suffix">分钟</text>
+      </view>
+    </view>
+    
+    <!-- 偏好的运动类型 -->
+    <view class="form-group">
+      <view class="form-label">偏好的运动类型（多选）</view>
+      <view class="checkboxes">
+        <view 
+          wx:for="{{exerciseTypeOptions}}" 
+          wx:key="id" 
+          class="checkbox-item {{exerciseHabits.preferredExercises.indexOf(item.id) > -1 ? 'active' : ''}}" 
+          bindtap="toggleExerciseType" 
+          data-id="{{item.id}}"
+        >
+          <text>{{item.name}}</text>
+          <icon wx:if="{{exerciseHabits.preferredExercises.indexOf(item.id) > -1}}" class="checkbox-icon" type="success" size="16" color="#4CAF50"></icon>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 保存按钮 -->
+    <view class="form-actions">
+      <button class="btn btn-lg" bindtap="saveHealthProfile" loading="{{saveLoading}}" disabled="{{saveLoading}}">保存健康档案</button>
+    </view>
+  </view>
+</view> 

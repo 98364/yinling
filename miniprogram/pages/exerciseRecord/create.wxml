@@ -1,0 +1,86 @@
+<!--pages/exerciseRecord/create.wxml-->
+<view class="container">
+  <view class="form-container">
+    <!-- 运动类型 -->
+    <view class="form-item" bindtap="showPicker" data-type="type">
+      <view class="form-label">运动类型</view>
+      <view class="form-content">
+        <text>{{selectedType}}</text>
+        <text class="icon-right">></text>
+      </view>
+    </view>
+    
+    <!-- 运动强度 -->
+    <view class="form-item" bindtap="showPicker" data-type="intensity">
+      <view class="form-label">运动强度</view>
+      <view class="form-content">
+        <text>{{selectedIntensity}}</text>
+        <text class="icon-right">></text>
+      </view>
+    </view>
+    
+    <!-- 持续时间 -->
+    <view class="form-item">
+      <view class="form-label">持续时间</view>
+      <view class="form-content duration-control">
+        <view class="btn-adjust" bindtap="adjustDuration" data-action="decrease">-</view>
+        <input class="duration-input" type="number" value="{{duration}}" bindinput="inputDuration" />
+        <text class="duration-unit">分钟</text>
+        <view class="btn-adjust" bindtap="adjustDuration" data-action="increase">+</view>
+      </view>
+    </view>
+    
+    <!-- 日期选择 -->
+    <view class="form-item">
+      <view class="form-label">日期</view>
+      <view class="form-content">
+        <picker mode="date" value="{{date}}" start="2020-01-01" end="2030-12-31" bindchange="bindDateChange">
+          <view class="picker-value">{{date}}</view>
+        </picker>
+        <text class="icon-right">></text>
+      </view>
+    </view>
+    
+    <!-- 时间选择 -->
+    <view class="form-item">
+      <view class="form-label">时间</view>
+      <view class="form-content">
+        <picker mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+          <view class="picker-value">{{time}}</view>
+        </picker>
+        <text class="icon-right">></text>
+      </view>
+    </view>
+    
+    <!-- 备注 -->
+    <view class="form-item notes-item">
+      <view class="form-label">备注</view>
+      <view class="form-content">
+        <textarea class="notes-input" placeholder="请输入备注（选填）" value="{{notes}}" bindinput="inputNotes" maxlength="200"></textarea>
+        <view class="notes-count">{{notes.length}}/200</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部按钮 -->
+  <view class="btn-container">
+    <button class="btn btn-cancel" bindtap="cancel">取消</button>
+    <button class="btn btn-save" bindtap="saveRecord" loading="{{isLoading}}">保存</button>
+  </view>
+  
+  <!-- 选择器弹出层 -->
+  <view class="picker-popup" wx:if="{{showPicker}}">
+    <view class="picker-mask" bindtap="hidePicker"></view>
+    <view class="picker-content">
+      <view class="picker-header">
+        <view class="picker-title">{{pickerType === 'type' ? '选择运动类型' : '选择运动强度'}}</view>
+        <view class="picker-close" bindtap="hidePicker">×</view>
+      </view>
+      <picker-view value="{{[0]}}" indicator-style="height: 50px;" style="width: 100%; height: 250px;" bindchange="confirmPicker">
+        <picker-view-column>
+          <view wx:for="{{pickerType === 'type' ? exerciseTypes : intensities}}" wx:key="*this" style="line-height: 50px; text-align: center;">{{item}}</view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</view>

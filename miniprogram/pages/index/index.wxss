@@ -1,0 +1,267 @@
+/**index.wxss**/
+/* 加载中 */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 6rpx solid rgba(76, 175, 80, 0.2);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 20rpx;
+  color: var(--light-text-color);
+  font-size: 28rpx;
+}
+
+/* 未登录状态 */
+.not-login-container {
+  padding: 40rpx 0;
+}
+
+.welcome-block {
+  text-align: center;
+  padding: 60rpx 40rpx;
+}
+
+.introduction {
+  margin-top: 60rpx;
+  text-align: left;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+}
+
+.feature-icon {
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+
+.feature-text {
+  font-size: 32rpx;
+}
+
+/* 登录后的主页 */
+.user-card {
+  margin-bottom: 30rpx;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  margin-right: 30rpx;
+}
+
+.user-detail {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.user-health-tag {
+  display: inline-block;
+  font-size: 24rpx;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: 30rpx;
+  padding: 4rpx 20rpx;
+}
+
+/* 分区通用样式 */
+.section {
+  margin-bottom: 30rpx;
+}
+
+.section-header {
+  padding: 20rpx 10rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.more-link {
+  font-size: 28rpx;
+  color: var(--primary-color);
+}
+
+/* 运动计划 */
+.plan-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.plan-progress {
+  margin-bottom: 10rpx;
+}
+
+.progress-text {
+  font-size: 26rpx;
+  color: var(--light-text-color);
+  display: inline-block;
+  margin-top: 10rpx;
+}
+
+/* 运动记录 */
+.record-item {
+  padding: 20rpx 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.record-item:last-child {
+  border-bottom: none;
+}
+
+.record-name {
+  font-size: 30rpx;
+  font-weight: 500;
+}
+
+.record-duration {
+  font-size: 30rpx;
+  color: var(--primary-color);
+}
+
+.record-tag {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 6rpx;
+  padding: 4rpx 16rpx;
+  margin-right: 20rpx;
+}
+
+.record-time {
+  font-size: 24rpx;
+  color: var(--light-text-color);
+}
+
+/* 健康知识 */
+.knowledge-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.knowledge-card {
+  margin-bottom: 20rpx;
+}
+
+.knowledge-content {
+  flex: 1;
+  padding-right: 20rpx;
+}
+
+.knowledge-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.knowledge-summary {
+  font-size: 28rpx;
+  color: var(--light-text-color);
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.knowledge-meta {
+  display: flex;
+  align-items: center;
+}
+
+.knowledge-category {
+  font-size: 24rpx;
+  color: var(--primary-color);
+  margin-right: 20rpx;
+}
+
+.knowledge-date {
+  font-size: 24rpx;
+  color: var(--light-text-color);
+}
+
+.knowledge-image {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 8rpx;
+}
+
+/* 社区热门话题 */
+.topic-item {
+  padding: 20rpx 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.topic-item:last-child {
+  border-bottom: none;
+}
+
+.topic-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 10rpx;
+}
+
+.topic-meta {
+  display: flex;
+  align-items: center;
+}
+
+.topic-posts, .topic-likes {
+  font-size: 24rpx;
+  color: var(--light-text-color);
+  margin-right: 20rpx;
+}
+
+/* 无数据状态 */
+.no-data-tip {
+  text-align: center;
+  padding: 40rpx 0;
+  color: var(--light-text-color);
+}
+
+/* 辅助类 */
+.mt-30 {
+  margin-top: 30px;
+} 

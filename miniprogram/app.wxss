@@ -1,0 +1,230 @@
+/**app.wxss**/
+/* 全局样式 */
+page {
+  --primary-color: #4CAF50;
+  --secondary-color: #8BC34A;
+  --text-color: #333333;
+  --light-text-color: #999999;
+  --background-color: #F5F6FA;
+  --card-background: #FFFFFF;
+  --border-color: #EEEEEE;
+  --success-color: #52C41A;
+  --warning-color: #FAAD14;
+  --error-color: #F5222D;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* 通用容器 */
+.container {
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--card-background);
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 标题 */
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+}
+
+/* 表单样式 */
+.form-group {
+  margin-bottom: 24rpx;
+}
+
+.form-label {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: var(--text-color);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  background-color: #F8F8F8;
+  border: 1px solid var(--border-color);
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  height: 200rpx;
+}
+
+/* 按钮样式 */
+.btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  font-size: 28rpx;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.6;
+  border-radius: 8rpx;
+  overflow: hidden;
+  color: #FFFFFF;
+  background-color: var(--primary-color);
+  margin-bottom: 20rpx;
+}
+
+.btn-outline {
+  color: var(--primary-color);
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+}
+
+.btn-lg {
+  padding: 24rpx 0;
+  font-size: 32rpx;
+}
+
+.btn-sm {
+  padding: 12rpx 0;
+  font-size: 24rpx;
+}
+
+/* 文本颜色 */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-error {
+  color: var(--error-color);
+}
+
+.text-light {
+  color: var(--light-text-color);
+}
+
+/* 辅助类 */
+.mt-10 {
+  margin-top: 10rpx;
+}
+
+.mb-10 {
+  margin-bottom: 10rpx;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mb-20 {
+  margin-bottom: 20rpx;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--border-color);
+  margin: 20rpx 0;
+}
+
+/* 针对老年用户的无障碍样式 */
+.large-text {
+  font-size: 120%;
+}
+
+.high-contrast {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 2rpx solid #000000;
+}
+
+/* 列表样式 */
+.list-item {
+  padding: 24rpx 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* 标签样式 */
+.tag {
+  display: inline-block;
+  padding: 6rpx 16rpx;
+  font-size: 24rpx;
+  border-radius: 6rpx;
+  margin-right: 10rpx;
+  margin-bottom: 10rpx;
+  background-color: #F0F8FF;
+  color: var(--primary-color);
+} 

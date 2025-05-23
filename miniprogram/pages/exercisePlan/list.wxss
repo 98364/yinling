@@ -1,0 +1,159 @@
+/* pages/exercisePlan/list.wxss */
+
+.container {
+  padding: 30rpx;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.subtitle {
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 10rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.recommend-section {
+  margin-bottom: 40rpx;
+}
+
+.recommend-card {
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.recommend-image {
+  width: 100%;
+  height: 300rpx;
+}
+
+.recommend-info {
+  padding: 20rpx;
+}
+
+.recommend-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+.recommend-desc {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 20rpx;
+}
+
+.recommend-duration, .recommend-intensity {
+  font-size: 26rpx;
+  color: #4CAF50;
+  margin-bottom: 6rpx;
+}
+
+.plan-section {
+  margin-bottom: 40rpx;
+}
+
+.plan-list {
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.plan-item {
+  display: flex;
+  padding: 30rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.plan-item:last-child {
+  border-bottom: none;
+}
+
+.plan-icon {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.plan-info {
+  flex: 1;
+}
+
+.plan-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+  color: #333;
+}
+
+.plan-desc {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.plan-progress {
+  display: flex;
+  align-items: center;
+}
+
+.plan-progress progress {
+  flex: 1;
+  margin-right: 10rpx;
+}
+
+.plan-progress text {
+  font-size: 24rpx;
+  color: #4CAF50;
+}
+
+.plan-arrow {
+  display: flex;
+  align-items: center;
+  color: #999;
+}
+
+.btn-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-generate, .btn-record {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 45rpx;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn-generate {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+.btn-record {
+  background-color: #fff;
+  color: #4CAF50;
+  border: 1rpx solid #4CAF50;
+} 

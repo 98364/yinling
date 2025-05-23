@@ -1,0 +1,58 @@
+<!--pages/knowledge/list.wxml-->
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <view class="search-box">
+      <icon type="search" size="16" color="#999" />
+      <input type="text" placeholder="搜索健康知识" confirm-type="search" value="{{searchText}}" bindinput="onSearchInput" />
+      <view class="clear-btn" bindtap="clearSearch" wx:if="{{searchText}}">
+        <icon type="clear" size="14" color="#999" />
+      </view>
+    </view>
+  </view>
+  
+  <!-- 分类导航 -->
+  <scroll-view class="category-nav" scroll-x enable-flex>
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="category-item {{selectedCategory === item.id ? 'active' : ''}}"
+      bindtap="switchCategory"
+      data-category="{{item.id}}"
+    >
+      {{item.name}}
+    </view>
+  </scroll-view>
+  
+  <!-- 文章列表 -->
+  <view class="article-list">
+    <view wx:if="{{isLoading}}" class="loading-container">
+      <view class="loading"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
+    
+    <view wx:elif="{{articles.length === 0}}" class="empty-container">
+      <text>暂无相关内容</text>
+    </view>
+    
+    <view wx:else>
+      <view
+        wx:for="{{articles}}"
+        wx:key="id"
+        class="article-item"
+        bindtap="viewArticle"
+        data-id="{{item.id}}"
+      >
+        <view class="article-info">
+          <view class="article-title">{{item.title}}</view>
+          <view class="article-summary">{{item.summary}}</view>
+          <view class="article-meta">
+            <text class="article-category">{{item.category}}</text>
+            <text class="article-time">{{item.date}}</text>
+          </view>
+        </view>
+        <image class="article-image" src="{{item.image}}" mode="aspectFill" lazy-load />
+      </view>
+    </view>
+  </view>
+</view>

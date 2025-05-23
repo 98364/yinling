@@ -1,0 +1,61 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/profile/profile",
+    "pages/healthProfile/healthProfile",
+    "pages/exercisePlan/list",
+    "pages/exercisePlan/detail",
+    "pages/exercisePlan/generate",
+    "pages/exerciseRecord/create",
+    "pages/exerciseRecord/list",
+    "pages/statistics/index",
+    "pages/community/list",
+    "pages/community/detail",
+    "pages/community/create",
+    "pages/knowledge/list",
+    "pages/knowledge/detail",
+    "pages/knowledge/categories"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4CAF50",
+    "navigationBarTitleText": "银铃健康管家",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4CAF50",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home-active.png"
+      },
+      {
+        "pagePath": "pages/exercisePlan/list",
+        "text": "运动",
+        "iconPath": "assets/icons/exercise.png",
+        "selectedIconPath": "assets/icons/exercise-active.png"
+      },
+      {
+        "pagePath": "pages/community/list",
+        "text": "社区",
+        "iconPath": "assets/icons/community.png",
+        "selectedIconPath": "assets/icons/community-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {}
+} 

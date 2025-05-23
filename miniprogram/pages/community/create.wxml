@@ -1,0 +1,83 @@
+<!--pages/community/create.wxml-->
+<view class="container">
+  <view class="top-bar">
+    <view class="cancel-btn" bindtap="cancelPost">取消</view>
+    <view class="post-type">
+      <view class="type-item {{postType === 'checkin' ? 'active' : ''}}" bindtap="switchType" data-type="checkin">运动打卡</view>
+      <view class="type-item {{postType === 'topic' ? 'active' : ''}}" bindtap="switchType" data-type="topic">话题交流</view>
+    </view>
+    <view class="publish-btn {{canPublish ? '' : 'disabled'}}" bindtap="publishPost">发布</view>
+  </view>
+  
+  <view class="content-container">
+    <view class="title-input-wrap" wx:if="{{postType === 'topic'}}">
+      <input class="title-input" placeholder="请输入标题（选填）" value="{{title}}" bindinput="onTitleInput" maxlength="30"></input>
+    </view>
+    
+    <view class="content-input-wrap">
+      <textarea class="content-input" placeholder="{{postType === 'checkin' ? '今天的运动情况如何？分享一下吧...' : '有什么想法和大家交流？'}}" value="{{content}}" bindinput="onContentInput" maxlength="1000" auto-height="{{true}}"></textarea>
+      <view class="word-count">{{content.length}}/1000</view>
+    </view>
+    
+    <view class="upload-container" wx:if="{{images.length > 0}}">
+      <view class="image-list">
+        <view class="image-item" wx:for="{{images}}" wx:key="index">
+          <image class="uploaded-image" src="{{item}}" mode="aspectFill"></image>
+          <view class="remove-btn" catchtap="removeImage" data-index="{{index}}">
+            <image src="/assets/icons/close.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="voice-container" wx:if="{{voiceUrl}}">
+      <view class="voice-message">
+        <view class="voice-icon {{isPlaying ? 'playing' : ''}}" bindtap="playVoice">
+          <image src="/assets/icons/voice.png"></image>
+        </view>
+        <view class="voice-duration">{{voiceDuration}}″</view>
+        <view class="voice-remove" catchtap="removeVoice">
+          <image src="/assets/icons/close.png"></image>
+        </view>
+      </view>
+    </view>
+    
+    <view class="topic-selector" wx:if="{{postType === 'topic'}}">
+      <view class="topic-header">
+        <text>选择话题</text>
+        <text class="topic-tip">选择合适的话题，让更多人看到</text>
+      </view>
+      <view class="topic-list">
+        <view class="topic-tag {{selectedTopic === 'exercise' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="exercise">运动技巧</view>
+        <view class="topic-tag {{selectedTopic === 'health' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="health">健康管理</view>
+        <view class="topic-tag {{selectedTopic === 'diet' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="diet">饮食营养</view>
+        <view class="topic-tag {{selectedTopic === 'joint' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="joint">关节保护</view>
+        <view class="topic-tag {{selectedTopic === 'chronic' ? 'selected' : ''}}" bindtap="selectTopic" data-topic="chronic">慢病管理</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="tool-bar">
+    <view class="tool-item" bindtap="chooseImage">
+      <image src="/assets/icons/photo.png"></image>
+      <text>图片</text>
+    </view>
+    <view class="tool-item" bindtouchstart="startVoiceRecord" bindtouchend="endVoiceRecord">
+      <image src="/assets/icons/voice_input.png"></image>
+      <text>语音</text>
+    </view>
+    <view class="tool-item" bindtap="chooseLocation">
+      <image src="/assets/icons/location.png"></image>
+      <text>位置</text>
+    </view>
+  </view>
+  
+  <!-- 语音录制状态 -->
+  <view class="voice-recording-mask" wx:if="{{isRecording}}">
+    <view class="recording-content">
+      <image class="recording-icon" src="/assets/icons/voice_recording.png"></image>
+      <text>松开结束</text>
+      <view class="recording-time">{{recordTime}}s</view>
+    </view>
+  </view>
+</view>

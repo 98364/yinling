@@ -1,0 +1,54 @@
+<!--pages/knowledge/detail.wxml-->
+<view class="container">
+  <view wx:if="{{isLoading}}" class="loading-container">
+    <view class="loading"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+  
+  <block wx:elif="{{article}}">
+    <!-- 文章头部 -->
+    <view class="article-header">
+      <view class="article-title">{{article.title}}</view>
+      <view class="article-meta">
+        <text class="article-category">{{article.category}}</text>
+        <text class="article-time">{{article.date}}</text>
+      </view>
+    </view>
+    
+    <!-- 文章主图 -->
+    <image class="article-image" src="{{article.image}}" mode="widthFix" lazy-load bindtap="previewImage"></image>
+    
+    <!-- 文章摘要 -->
+    <view class="article-summary">
+      <text>{{article.summary}}</text>
+    </view>
+    
+    <!-- 文章内容 -->
+    <view class="article-content">
+      <rich-text nodes="{{article.content}}"></rich-text>
+    </view>
+    
+    <!-- 底部推荐 -->
+    <view class="recommend-section">
+      <view class="section-title">相关推荐</view>
+      <view class="recommend-tips">
+        <view class="tip-item">
+          <view class="tip-icon">💡</view>
+          <view class="tip-text">每天锻炼30分钟，保持健康生活方式</view>
+        </view>
+        <view class="tip-item">
+          <view class="tip-icon">🍎</view>
+          <view class="tip-text">均衡饮食，多摄入水果蔬菜</view>
+        </view>
+        <view class="tip-item">
+          <view class="tip-icon">💤</view>
+          <view class="tip-text">保证充足睡眠，提高免疫力</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  
+  <view wx:else class="empty-container">
+    <text>文章不存在</text>
+  </view>
+</view>

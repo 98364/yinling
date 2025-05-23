@@ -1,0 +1,297 @@
+/* pages/community/create.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.cancel-btn {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.post-type {
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  overflow: hidden;
+}
+
+.type-item {
+  padding: 10rpx 30rpx;
+  font-size: 28rpx;
+  color: #666;
+  position: relative;
+}
+
+.type-item.active {
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.publish-btn {
+  font-size: 32rpx;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.publish-btn.disabled {
+  color: #ccc;
+}
+
+.content-container {
+  flex: 1;
+  padding: 30rpx;
+  overflow-y: auto;
+}
+
+.title-input-wrap {
+  margin-bottom: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.title-input {
+  font-size: 36rpx;
+  font-weight: bold;
+  padding: 10rpx 0;
+}
+
+.content-input-wrap {
+  position: relative;
+  margin-bottom: 30rpx;
+}
+
+.content-input {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.word-count {
+  position: absolute;
+  right: 0;
+  bottom: -40rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.upload-container {
+  margin: 40rpx 0;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  position: relative;
+  width: 220rpx;
+  height: 220rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.image-item:nth-child(3n) {
+  margin-right: 0;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.remove-btn {
+  position: absolute;
+  top: -20rpx;
+  right: -20rpx;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-btn image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.voice-container {
+  margin: 30rpx 0;
+}
+
+.voice-message {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+  padding: 20rpx;
+  width: 300rpx;
+}
+
+.voice-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+
+.voice-icon image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.voice-icon.playing {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.voice-duration {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.voice-remove {
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voice-remove image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.topic-selector {
+  margin: 30rpx 0;
+  padding-top: 30rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.topic-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.topic-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.topic-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.topic-tag {
+  padding: 10rpx 30rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+  background-color: #f5f5f5;
+  border-radius: 30rpx;
+}
+
+.topic-tag.selected {
+  color: #fff;
+  background-color: #4CAF50;
+}
+
+.tool-bar {
+  display: flex;
+  padding: 20rpx 30rpx;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.tool-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 60rpx;
+}
+
+.tool-item image {
+  width: 50rpx;
+  height: 50rpx;
+  margin-bottom: 10rpx;
+}
+
+.tool-item text {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.voice-recording-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.recording-content {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 20rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.recording-icon {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 30rpx;
+}
+
+.recording-content text {
+  color: #fff;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.recording-time {
+  color: #4CAF50;
+  font-size: 32rpx;
+  font-weight: bold;
+} 
